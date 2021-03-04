@@ -1,0 +1,5 @@
+{
+  "name": "Rebuild & Push images Workflow",
+  "description": "Packit Org workflow template for building container images and pushing to Quay.io.",
+  "iconName": "packit"
+}
