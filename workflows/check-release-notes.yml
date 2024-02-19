@@ -1,0 +1,39 @@
+name: Check release notes in the PR description
+
+on:
+  workflow_call:
+    inputs:
+      description:
+        required: true
+        type: string
+      placeholder:
+        required: true
+        type: string
+
+jobs:
+  release-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if there are any release release notes and placeholder
+        env:
+          PR_DESCRIPTION: ${{ inputs.description }}
+          NOTES_PLACEHOLDER: ${{ inputs.placeholder }}
+        shell: python
+        run: |
+          import os
+
+          RELEASE_NOTES_TAG = "RELEASE NOTES"
+          PLACEHOLDER = os.getenv("NOTES_PLACEHOLDER")
+
+
+          description = os.getenv("PR_DESCRIPTION")
+          if f"{RELEASE_NOTES_TAG} BEGIN" in description:
+              print("::notice::Release notes are present.")
+          else:
+              print("::warning::Release notes are not present.")
+              exit()
+
+          if PLACEHOLDER in description:
+              print("::error::Release notes are still not written.")
+          else:
+              print("::debug::Release notes placeholder has not been found.")
