@@ -21,9 +21,12 @@ jobs:
         shell: python
         run: |
           import os
+          import re
 
           RELEASE_NOTES_TAG = "RELEASE NOTES"
-          PLACEHOLDER = os.getenv("NOTES_PLACEHOLDER")
+          PLACEHOLDER_REGEX = (
+              f'\\s*(TBD|TODO|FIXME|XXX|{os.getenv("NOTES_PLACEHOLDER")})\\s*'
+          )
 
 
           description = os.getenv("PR_DESCRIPTION")
@@ -33,7 +36,14 @@ jobs:
               print("::warning::Release notes are not present.")
               exit()
 
-          if PLACEHOLDER in description:
+          if re.search(
+              (
+                  f"{RELEASE_NOTES_TAG} BEGIN\r?\n"
+                  f"{PLACEHOLDER_REGEX}\r?\n"
+                  f"{RELEASE_NOTES_TAG} END"
+              ),
+              description,
+          ):
               print("::error::Release notes are still not written.")
           else:
               print("::debug::Release notes placeholder has not been found.")
