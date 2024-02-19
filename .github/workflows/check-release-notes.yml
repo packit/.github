@@ -45,5 +45,6 @@ jobs:
               description,
           ):
               print("::error::Release notes are still not written.")
+              exit(1)
           else:
               print("::debug::Release notes placeholder has not been found.")
