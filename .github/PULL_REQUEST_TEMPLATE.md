@@ -1,3 +1,5 @@
+<!-- TODO list -->
+
 TODO:
 
 - [ ] Write new tests or update the old ones to cover new functionality.
@@ -17,6 +19,8 @@ Fixes
 Related to
 
 Merge before/after
+
+<!-- release notes footer -->
 
 RELEASE NOTES BEGIN
 
