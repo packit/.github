@@ -7,8 +7,9 @@ on:
         required: true
         type: string
       placeholder:
-        required: true
+        required: false
         type: string
+        default: "Packit now supports automatic ordering of ☕ after all checks pass."
 
 jobs:
   release-notes:
