@@ -23,7 +23,5 @@ Merge before/after
 <!-- release notes footer -->
 
 RELEASE NOTES BEGIN
-
-Packit now supports automatic ordering of ☕ after all checks pass.
-
+￼
 RELEASE NOTES END
