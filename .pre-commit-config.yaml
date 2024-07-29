@@ -24,7 +24,7 @@ repos:
           - https://github.com/packit/.github.git
         stages: [manual, push]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.6
+    rev: 0.29.1
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
